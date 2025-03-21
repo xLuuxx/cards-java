@@ -1,11 +1,11 @@
-package fr.ynov.javacards.Cards;
+package fr.ynov.javacards.cards;
 
-public class card {
-    cardType type; // is it a head or a number kind of cards ?
+public class Card {
+    CardType type; // is it a head or a number kind of cards ?
     String cardName;
 
     //CONSTRUCTOR
-    public card(cardType type, String cardName) {
+    public Card(CardType type, String cardName) {
         this.type = type;
         this.cardName = cardName;
     }

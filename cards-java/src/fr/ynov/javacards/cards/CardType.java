@@ -1,7 +1,7 @@
-package fr.ynov.javacards.Cards;
+package fr.ynov.javacards.cards;
 
 
-public enum cardType {
+public enum CardType {
     // Give each card a number value and compares it in the isItStronger methods to determine which one beats the other.
     KING(13),
     QUEEN(12),
@@ -12,7 +12,7 @@ public enum cardType {
 
     final int value;
 
-    cardType(int value) {
+    CardType(int value) {
         this.value = value;
     }
 }
