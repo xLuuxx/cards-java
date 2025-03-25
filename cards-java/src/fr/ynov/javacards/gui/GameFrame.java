@@ -24,7 +24,7 @@ public class GameFrame {
     public void initializeGame() {
         JFrame frame = new JFrame("Card Game");
         frame.setResizable(false);
-        frame.setSize(500, 400);
+        frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Shut down the program when window closes
 
 
@@ -78,11 +78,11 @@ public class GameFrame {
 
             // Check if anyone won.
             if (gameLogic.isItLoose(studentPlayer)) {
-                JOptionPane.showMessageDialog(frame, "You won!.");
+                JOptionPane.showMessageDialog(frame, "You won!");
                 frame.dispose();
                 initializeGame();
             } else if (gameLogic.isItLoose(computerPlayer)) {
-                JOptionPane.showMessageDialog(frame, "You lost!.");
+                JOptionPane.showMessageDialog(frame, "You lost!");
                 frame.dispose();
                 initializeGame();
             }
