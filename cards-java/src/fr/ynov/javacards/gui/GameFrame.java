@@ -10,16 +10,21 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class GameFrame {
-    private final TurnLogic gameLogic;
-    private final JLabel computerPlayedLabel;
-    private final JPanel buttonPanel;
+    private TurnLogic gameLogic;
+    private JLabel computerPlayedLabel;
+    private JPanel buttonPanel;
+    private JLabel studentScoreLabel;
+    private JLabel computerScoreLabel;
 
 
-    // Contains most of the logic for the game and the GUI
     public GameFrame() {
+        initializeGame();
+    }
+    // Contains most of the logic for the game and the GUI
+    public void initializeGame() {
         JFrame frame = new JFrame("Card Game");
-        frame.setResizable(true);
-        frame.setSize(500, 500);
+        frame.setResizable(false);
+        frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Shut down the program when window closes
 
 
@@ -44,8 +49,14 @@ public class GameFrame {
         JLabel studentPlayedLabel = new JLabel("You can play: ");
         frame.add(studentPlayedLabel, BorderLayout.NORTH);
 
+        studentScoreLabel = new JLabel("Student Score : " + studentPlayer.getScore());
+        computerScoreLabel = new JLabel("Computer Score : " + computerPlayer.getScore());
+        JPanel scorePanel = new JPanel();
+        scorePanel.add(studentScoreLabel);
+        scorePanel.add(computerScoreLabel);
+        frame.add(studentScoreLabel, BorderLayout.WEST);
+        frame.add(computerScoreLabel, BorderLayout.EAST);
 
-        // Add the buttons to the GUI
 
         ActionListener cardListener = e -> {
             String cardName = e.getActionCommand();
@@ -61,13 +72,22 @@ public class GameFrame {
             Card computerCard = gameLogic.computeTurn(cardIndex);
             computerPlayedLabel.setText("Computer played: " + computerCard.getCardName()); // Show what the computer plays
 
+            // Shows what are the scores of the players
+            studentScoreLabel.setText("Student Score: " + studentPlayer.getScore());
+            computerScoreLabel.setText("Computer Score: " + computerPlayer.getScore());
+
             // Check if anyone won.
             if (gameLogic.isItLoose(studentPlayer)) {
-                JOptionPane.showMessageDialog(frame, "You lost!.");
-            } else if (gameLogic.isItLoose(computerPlayer)) {
                 JOptionPane.showMessageDialog(frame, "You won!.");
+                frame.dispose();
+                initializeGame();
+            } else if (gameLogic.isItLoose(computerPlayer)) {
+                JOptionPane.showMessageDialog(frame, "You lost!.");
+                frame.dispose();
+                initializeGame();
             }
         };
+
         // Add buttons for each card
         for (Card card : studentPlayer.getCardsInHands()) {
             cardButton.addButton(buttonPanel, cardListener, card);

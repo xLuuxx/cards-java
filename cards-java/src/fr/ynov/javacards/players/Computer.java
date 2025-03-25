@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Random;
 
 public class Computer extends Player {
-    CardType lastPlayedCard = null;
 
     public Computer(String playersName, int numberOfCards, List<Card> cardsInHands) {
         // SUPER constructor since it extends to the mother class.
@@ -24,6 +23,7 @@ public class Computer extends Player {
         Random random = new Random();
         int randomIndex = random.nextInt(cardsInHands.size());
         Card computerCard = cardsInHands.get(randomIndex);
+        System.out.println("Computer decided to play: " + computerCard.getCardName());
         cardsInHands.remove(computerCard);
 
         return computerCard;

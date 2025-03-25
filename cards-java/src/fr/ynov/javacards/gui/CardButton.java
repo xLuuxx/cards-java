@@ -13,7 +13,7 @@ public class CardButton {
     private final Map<String, JButton> buttonMap = new HashMap<>();
 
 
-
+// Allow me to remove the played button from the panel
     public void removeButton(String cardName, JPanel buttonPanel) {
         JButton button = buttonMap.remove(cardName);
         if (button != null) {
@@ -34,4 +34,3 @@ public class CardButton {
         buttonPanel.repaint();
     }
 }
-

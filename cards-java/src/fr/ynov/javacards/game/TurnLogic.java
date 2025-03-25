@@ -8,34 +8,39 @@ import fr.ynov.javacards.players.Student;
 import static fr.ynov.javacards.game.CardLogic.isItStronger;
 
 public class TurnLogic {
-    private Student StudentPlayer;
-    private Computer ComputerPlayer;
+    private Student studentPlayer;
+    private Computer computerPlayer;
 
-    // Constructor
-    public TurnLogic(Student StudentPlayer, Computer ComputerPlayer) {
-        this.StudentPlayer = StudentPlayer;
-        this.ComputerPlayer = ComputerPlayer;
+    // CONSTRUCTOR
+    public TurnLogic(Student studentPlayer, Computer computerPlayer) {
+        this.studentPlayer = studentPlayer;
+        this.computerPlayer = computerPlayer;
     }
 
     // Compute the turn
     public Card computeTurn(int studentCardIndex) {
         Card studentCard = studentTurn(studentCardIndex);
         Card computerCard = computerTurn();
-        boolean isItStronger = isItStronger(studentCard, computerCard);
+        int comparisonResult = isItStronger(studentCard, computerCard);
 
-        if (isItStronger) {
-            StudentPlayer.addTwoCards(studentCard, computerCard);
-        } else {
-            ComputerPlayer.addTwoCards(computerCard, studentCard);
-        }
-
+        // Handle the comparison result
+                switch (comparisonResult) {
+                    case 1 : studentPlayer.addScore(studentPlayer.getScore()+1);
+                    break;
+                    case 2 : computerPlayer.addScore(computerPlayer.getScore()+1);
+                    break;
+                    case 3 :
+                        studentPlayer.addScore(studentPlayer.getScore() + 1);
+                        computerPlayer.addScore(computerPlayer.getScore() + 1);
+                        break;
+                }
         return computerCard;
     }
 
 
-    // Check the loose condition
+// handle the winning condition
     public boolean isItLoose(Player player) {
-        if (player.getNumberOfCards() == 0) {
+        if (player.getScore() == 7) {
             return true;
         }
         return false;
@@ -43,28 +48,20 @@ public class TurnLogic {
 
     // Handle the student turn in play
     public Card studentTurn(int cardIndex) {
-       return StudentPlayer.studentPlays(cardIndex);
+       return studentPlayer.studentPlays(cardIndex);
     }
 
     // Handle the computer turn in play
     public Card computerTurn() {
-        return ComputerPlayer.computerPlays();
+        return computerPlayer.computerPlays();
     }
 
     // GETTER AND SETTER
-    public Student getStudentPlayer() {
-        return StudentPlayer;
-    }
-
     public void setStudentPlayer(Student StudentPlayer) {
-        this.StudentPlayer = StudentPlayer;
-    }
-
-    public Computer getComputerPlayer() {
-        return ComputerPlayer;
+        this.studentPlayer = StudentPlayer;
     }
 
     public void setComputerPlayer(Computer ComputerPlayer) {
-        this.ComputerPlayer = ComputerPlayer;
+        this.computerPlayer = ComputerPlayer;
     }
 }

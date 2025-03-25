@@ -12,6 +12,7 @@ public class Player {
     String playersName; // what is the player's name ?
     List<Card> cardsInHands;
     int numberOfCards; // how many cards does the players has : useful for the winning condition.
+    private int score; // the player's score
 
 
 
@@ -47,35 +48,28 @@ public class Player {
         cardsInHands.add(new Card(CardType.TEN, "TEN"));
         cardsInHands.add(new Card(CardType.NINE, "NINE"));
         cardsInHands.add(new Card(CardType.EIGHT, "EIGHT"));
-        numberOfCards += 6;
+        cardsInHands.add(new Card(CardType.SEVEN, "SEVEN"));
+        cardsInHands.add(new Card(CardType.SIX, "SIX"));
+        cardsInHands.add(new Card(CardType.FIVE, "FIVE"));
+        cardsInHands.add(new Card(CardType.FOUR, "FOUR"));
+        cardsInHands.add(new Card(CardType.THREE, "THREE"));
+        cardsInHands.add(new Card(CardType.TWO, "TWO"));
+        cardsInHands.add(new Card(CardType.ACE, "ACE"));
+        numberOfCards += 14;
     }
 
-
-    // Allow to add two cards once the player round is won
-public void addTwoCards(Card card, Card card2) {
-    cardsInHands.add(card);
-    cardsInHands.add(card2);
-    numberOfCards += 2;
-}
+    public void addScore(int score) {
+        this.score ++;
+    }
 
     // GETTER AND SETTER
-    public String getPlayersName() {
-        return playersName;
-    }
-
-    public void setPlayersName(String playersName) {
-        this.playersName = playersName;
-    }
-
     public List<Card> getCardsInHands() {
         return cardsInHands;
     }
 
-    public int getNumberOfCards() {
-        return numberOfCards;
-    }
-
-    public void setNumberOfCards(int numberOfCards) {
-        this.numberOfCards = numberOfCards;
+    public int getScore() {
+        return score;
     }
 }
+
+
