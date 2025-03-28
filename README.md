@@ -75,7 +75,8 @@ The project was developed using the following technologies:
 --- 
 ## 📋 Class diagram
 
-![diagrame](https://github.com/user-attachments/assets/362c68ab-7c56-45eb-915e-25873ad5a327)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/362c68ab-7c56-45eb-915e-25873ad5a327" top="250" width="250" title=diagram">
 
 ---
 
