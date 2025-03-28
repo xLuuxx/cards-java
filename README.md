@@ -9,7 +9,8 @@
 3. [**How to run the project**](#-how-to-run-the-project)
 4. [**Technologies**](#-technologies)
 5. [**Project Structure**](#-project-structure)
-6. [**Credits**](#-credits)
+6. [**Class diagram**](#-class-diagram)
+7. [**Credits**](#-credits)
 
 ---
 
@@ -70,6 +71,13 @@ The project was developed using the following technologies:
 │   │   │   └── CardGame
 └── README.md
 ```
+
+--- 
+## 📋 Class diagram
+
+![diagrame](https://github.com/user-attachments/assets/362c68ab-7c56-45eb-915e-25873ad5a327)
+
+---
 
 ## 🎬 Credit
 <p align="left">
