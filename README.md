@@ -34,7 +34,7 @@ To run the project, you will need to have intellij idea installed on your comput
 
 Clone the repository:
 ```bash
-git clone (https://github.com/xLuuxx/cards-java.git)
+git clone https://github.com/xLuuxx/cards-java.git
 ```
 Open IJ with the project you just cloned and go to the CardGame file. 
 Run the public static void main method. 
